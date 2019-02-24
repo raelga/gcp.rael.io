@@ -1,0 +1,3 @@
+[submodule "dm/templates"]
+	path = dm/templates
+	url = git@github.com:raelga/gcp-dm-templates.git
