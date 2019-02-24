@@ -44,7 +44,7 @@ $(addprefix dm-create-,$(DEPLOYMENTS)):dm-create-%:.dm-set-%
 # Target for updating the deployment after previewing the changes
 # Requires a manual user confirmation after the preview
 .PHONY+=$(addprefix dm-update-,$(DEPLOYMENTS))
-$(addprefix dm-update-,$(DEPLOYMENTS)):dm-update-%:.dm-set-% .dm-preview-%
+$(addprefix dm-update-,$(DEPLOYMENTS)):dm-update-%:.dm-set-% dm-preview-%
 	@echo -n "Ready to update, are you sure? Ctrl+C to cancel " \
 		&& read ans
 	gcloud deployment-manager deployments \
@@ -52,8 +52,8 @@ $(addprefix dm-update-,$(DEPLOYMENTS)):dm-update-%:.dm-set-% .dm-preview-%
 		--project ${project_id}
 
 # Target for previewing the deployment
-.PHONY+=$(addprefix .dm-preview-,$(DEPLOYMENTS))
-$(addprefix .dm-preview-,$(DEPLOYMENTS)):.dm-preview-%:.dm-set-%
+.PHONY+=$(addprefix dm-preview-,$(DEPLOYMENTS))
+$(addprefix dm-preview-,$(DEPLOYMENTS)):dm-preview-%:.dm-set-%
 	gcloud deployment-manager deployments \
 		update ${dm_name} \
 		--config ${dm_config} \
