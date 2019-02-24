@@ -1,0 +1,11 @@
+imports:
+  - path: ../../../templates/compute/vpc-network.jinja
+
+resources:
+
+- name: vpc-network
+  type: ../../../templates/compute/vpc-network.jinja
+  properties:
+    subnets:
+      - name: compute
+        range: 10.60.248.0/24
