@@ -8,4 +8,5 @@ resources:
   properties:
     subnets:
       - name: compute
-        range: 10.60.0.0/22
+        range: 10.60.0.0/23
+    google-managed-services-range: 10.60.2.0/23
