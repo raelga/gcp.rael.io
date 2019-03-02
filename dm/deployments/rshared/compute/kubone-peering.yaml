@@ -1,0 +1,10 @@
+imports:
+  - path: ../../../templates/compute/vpc-network-peering.jinja
+
+resources:
+  - name: shared-kubone-peering
+    type: ../../../templates/compute/vpc-network-peering.jinja
+    properties:
+      name: shared-kubone-peering
+      network: rshared-net
+      peerNetwork: projects/kubone/global/networks/kubone-net
