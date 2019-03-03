@@ -1,0 +1,47 @@
+imports:
+  - path: ../../../templates/storage/bucket.jinja
+  - path: ../../../templates/iam/service-account.jinja
+
+# To create the GCR you need to push any image to the repo url
+#
+# docker pull hello-world
+# docker tag hello-world gcr.io/kubone/hello-world
+# gcloud auth configure-docker
+# docker push gcr.io/kubone/hello-world
+
+resources:
+  - name: bucket-sa
+    type: ../../../templates/iam/service-account.jinja
+    properties:
+      name: gcr-bucket
+      description: Service account for the gcr.io/kubone container regisrty
+      keys:
+        - travis
+
+  - name: bucket
+    type: ../../../templates/storage/bucket.jinja
+    properties:
+      name: artifacts.kubone.appspot.com
+      storageClass: multi_regional
+      location: us
+      acl:
+        - name: bucket-sa
+          entity: user-$(ref.bucket-sa.email)
+          role: WRITER
+      bindings:
+        - role: roles/storage.objectViewer
+          members:
+            - serviceAccount:kubone-gke-nodes@kubone.iam.gserviceaccount.com
+
+outputs:
+  - name: bucket
+    value: $(ref.bucket.name)
+
+  - name: bucket-sa
+    value: $(ref.bucket-sa.email)
+
+  - name: bucket-sa-travis-rest-key
+    value: $(ref.bucket-sa.travis-rest-key)
+
+  - name: bucket-sa-travis-base64-key
+    value: $(ref.bucket-sa.travis-base64-key)
