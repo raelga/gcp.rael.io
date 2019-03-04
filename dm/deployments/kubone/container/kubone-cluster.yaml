@@ -1,0 +1,46 @@
+imports:
+  - path: ../../../templates/container/kubernetes-cluster.jinja
+#  - path: ../../templates/storage/gcr-bucket-iam-policy.jinja
+
+resources:
+  - name: kubernetes-cluster
+    type: ../../../templates/container/kubernetes-cluster.jinja
+    properties:
+      name: kubone
+      description: kubone Kubernetes Engine cluster.
+      type: LOCAL
+      network:
+        name: kubone-net
+        subnet: kubernetes-sn
+        location: europe-west1-b
+        nonMasqueradeCIDRs: 10.60.0.0/16
+      nodePools:
+        - name: addons-pf-f1m
+          preemptible: true
+          autoscaling: false
+          taints:
+            - key: CriticalAddonsOnly
+              effect: PREFER_NO_SCHEDULE
+        # - name: compute-pf-f1m
+        #   preemptible: true
+        #   autoscaling: false
+        #   taints:
+        #     - key: Preemtible
+        #       effect: NO_EXECUTE
+
+  # Pending DM issue
+  # https://github.com/GoogleCloudPlatform/deploymentmanager-samples/issues/283
+  # - name: gke-gcr-bucket-iam-policy
+  #   type: ../../templates/storage/gcr-bucket-iam-policy.jinja
+  #   properties:
+  #     name: gke-kubone-gcr-pull-iam-policy
+  #     region: eu
+  #     serviceAccount: $(ref.kubernetes-cluster.nodes-sa)
+
+outputs:
+  - name: cluster-name
+    value: $(ref.kubernetes-cluster.name)
+  - name: cluster-endpoint
+    value: $(ref.kubernetes-cluster.endpoint)
+  - name: cluster-nodes-sa
+    value: $(ref.kubernetes-cluster.nodes-sa)
