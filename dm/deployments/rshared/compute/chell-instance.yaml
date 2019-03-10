@@ -1,0 +1,23 @@
+imports:
+  - path: ../../../templates/compute/instance.jinja
+
+resources:
+
+- name: chell
+  type: ../../../templates/compute/instance.jinja
+  properties:
+    description: "Chell hop instance"
+    machineType: f1-micro
+    bootDiskImage: projects/coreos-cloud/global/images/family/coreos-stable
+    network: rshared-net
+    reservedPublicAddress: true
+    allowSSH: true
+    disks:
+      - name: data
+        size: 15
+
+outputs:
+  - name: external-address
+    value: $(ref.chell.externalAddress)
+  - name: internal-address
+    value: $(ref.chell.internalAddress)
