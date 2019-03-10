@@ -1,0 +1,17 @@
+imports:
+  - path: ../../../templates/sql/master-instance.jinja
+
+resources:
+  - name: sites-mysql
+    type: ../../../templates/sql/master-instance.jinja
+    properties:
+      tier: db-f1-micro
+      publicIp: false
+      privateIp: true
+      privateNetwork: rshared-net
+
+outputs:
+  - name: connectionName
+    value: $(ref.sites-mysql.connectionName)
+  - name: ipAddress
+    value: $(ref.sites-mysql.ipAddresses[0].ipAddress)
