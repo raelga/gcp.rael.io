@@ -9,6 +9,10 @@ resources:
       publicIp: false
       privateIp: true
       privateNetwork: rshared-net
+      databases:
+        - name: vb_play4trophies
+        - name: wp_bigotes
+        - name: wp_sonidosysonados
 
 outputs:
   - name: connectionName
