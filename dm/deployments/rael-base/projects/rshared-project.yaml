@@ -16,5 +16,6 @@ resources:
         - iam.googleapis.com
         - servicenetworking.googleapis.com
         - sqladmin.googleapis.com
+        - cloudkms.googleapis.com
 
       set-dm-service-account-as-owner: true
