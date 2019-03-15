@@ -9,6 +9,9 @@ resources:
       publicIp: false
       privateIp: true
       privateNetwork: rshared-net
+      root:
+        host: 10.60.0.4
+        pass: CiQA8sR1k0KLImuVIqr4EJB0bHw3Hh9518tlWc15zr/zWkGWi+kScQCj8E1PIxQJT7G4v+jJUAUHhKGpyMiImPPmVMRQi0wqaCpTZ7aIbcJ0gkPMVSMAUXS38HdQ/vT2c1yyIJXEahl1Iox7ij+YK11H4Y5xoMgpwfxPgeGPQkdexU/pW/XjO/9g0e1TU9R7k2GobMbVhlC3
       databases:
         - name: vb_play4trophies
         - name: wp_bigotes
