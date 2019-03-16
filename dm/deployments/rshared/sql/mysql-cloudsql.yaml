@@ -15,7 +15,7 @@ resources:
       admins:
         - name: hoppy
           host: 10.60.0.4
-          pass: CiQAPjbphU1Sz787q+TZAfPklvLgChflenFDgblzGfXNVpHplzESqgEAmKDmr4yJNXZnp0wmjLj6uSL28fRpUb1o2UEfs/AbMOn85Yt3qkuQAVanuj5WTycz33ZRjYFToh074CpQqScQE6nRd/13dhOrFP01a0jTY5PqiOc/PSS2moUHP5dzKcQVY6SZswAzHMQHE+o2Joi2PWUrzMOintF3jWLaqrA5oSVkTPBqNH0mO72MNrjGEc/Zz2chbgs2kma0JoT+gk2RyPm/d78bSCOsEQ==
+          pass: CiQAPjbphcRUQwrq2fxlObZEO/khTsvrxqOSxJzHEZCy0AkVWYwSSACYoOavHKsPpLjwEE4AuoR9lsOIPvBcsHa3psiXFyAIn8N5ilYtkMhmhT7U3ckwhKwx1f3acVvnlnjBPRhnRufM2RPh4czErg==
       databases:
         - name: vb_play4trophies
         - name: p4t_psn
