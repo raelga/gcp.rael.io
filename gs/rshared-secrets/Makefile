@@ -67,3 +67,4 @@ $(addprefix download-and-decrypt-,$(SECRETS)): download-and-decrypt-%:
 remove-secrets:
 	@find . -type f -name '*.plain' -delete
 	@find . -type f -name '*.cipher' -delete
+	@find . -type f -name '*.cipher64' -delete
