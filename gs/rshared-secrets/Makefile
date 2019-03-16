@@ -2,6 +2,16 @@
 
 SHELL = /bin/bash
 
+ifneq ($(OS),Windows_NT)
+    UNAME_S := $(shell uname -s)
+    ifeq ($(UNAME_S),Linux)
+        B64_CMD = base64 -w 0
+    endif
+    ifeq ($(UNAME_S),Darwin)
+        B64_CMD = base64
+    endif
+endif
+
 # Help
 
 help:
