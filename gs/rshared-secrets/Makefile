@@ -55,6 +55,7 @@ $(addprefix encrypt-and-upload-,$(SECRETS)): encrypt-and-upload-%:
 $(addprefix download-and-decrypt-,$(SECRETS)): download-and-decrypt-%:
 	gsutil cp gs://$(GCP_BUCKET)/$*.cipher $*.cipher
 	shasum -a 512256 -c $*.shasum
+	$(B64_CMD) --input $*.cipher --output $*.cipher64
 	gcloud kms decrypt \
 		--location $(GCP_REGION) \
 		--project $(GCP_PROJECT) \
