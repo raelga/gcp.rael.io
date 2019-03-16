@@ -1,6 +1,8 @@
 imports:
   - path: ../../../templates/sql/master-instance.jinja
 
+configVersion: v1
+
 resources:
   - name: mysql
     type: ../../../templates/sql/master-instance.jinja
