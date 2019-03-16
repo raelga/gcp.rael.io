@@ -25,8 +25,8 @@ GCP_PROJECT := rshared
 GCP_REGION := europe-west1
 GCP_BUCKET := rshared-secrets
 
-KMS_KEYRING := sites-mysql-kms-kr
-KMS_CRYPTOKEY := sites-mysql-users-kms-ck
+KMS_KEYRING := mysql-kms-kr
+KMS_CRYPTOKEY := mysql-users-kms-ck
 
 gcloud-config-$(GCP_PROJECT):
 	gcloud config set project $(GCP_PROJECT)
