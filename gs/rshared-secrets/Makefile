@@ -49,6 +49,8 @@ $(addprefix encrypt-and-upload-,$(SECRETS)): encrypt-and-upload-%:
 	gsutil cp $*.cipher gs://$(GCP_BUCKET)/$*.cipher
 	shasum -a 512256 -b $*.cipher > $*.shasum
 	gsutil cp $*.shasum gs://$(GCP_BUCKET)/$*.shasum
+	$(B64_CMD) --input $*.cipher --output $*.cipher64
+	gsutil cp $*.cipher64 gs://$(GCP_BUCKET)/$*.cipher64
 
 $(addprefix download-and-decrypt-,$(SECRETS)): download-and-decrypt-%:
 	gsutil cp gs://$(GCP_BUCKET)/$*.cipher $*.cipher
