@@ -1,0 +1,28 @@
+imports:
+  - path: ../../../templates/sql/master-instance.jinja
+
+resources:
+  - name: mysql
+    type: ../../../templates/sql/master-instance.jinja
+    properties:
+      tier: db-f1-micro
+      binaryLogEnabled: false
+      publicIp: false
+      privateIp: true
+      privateNetwork: rshared-net
+      admins:
+        - name: hoppy
+          host: 10.60.0.4
+          pass: CiQAPjbphU1Sz787q+TZAfPklvLgChflenFDgblzGfXNVpHplzESqgEAmKDmr4yJNXZnp0wmjLj6uSL28fRpUb1o2UEfs/AbMOn85Yt3qkuQAVanuj5WTycz33ZRjYFToh074CpQqScQE6nRd/13dhOrFP01a0jTY5PqiOc/PSS2moUHP5dzKcQVY6SZswAzHMQHE+o2Joi2PWUrzMOintF3jWLaqrA5oSVkTPBqNH0mO72MNrjGEc/Zz2chbgs2kma0JoT+gk2RyPm/d78bSCOsEQ==
+      databases:
+        - name: vb_play4trophies
+        - name: p4t_psn
+        - name: p4t_psn_dev
+        - name: wp_bigotes
+        - name: wp_sonidosysonados
+
+outputs:
+  - name: connectionName
+    value: $(ref.mysql-master.connectionName)
+  - name: ipAddress
+    value: $(ref.mysql-master.ipAddresses[0].ipAddress)
