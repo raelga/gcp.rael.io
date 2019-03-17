@@ -15,6 +15,11 @@ resources:
     disks:
       - name: data
         size: 20
+    firewall:
+      - name: http
+        ports:
+          - 80
+          - 8080
 
 outputs:
   - name: external-address
