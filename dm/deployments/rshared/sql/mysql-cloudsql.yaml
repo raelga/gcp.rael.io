@@ -22,6 +22,11 @@ resources:
         - name: p4t_psn_dev
         - name: wp_bigotes
         - name: wp_sonidosysonados
+      imports:
+        - name: play4trophies
+          requiresACL: true
+          bucket: rshared-secrets
+          file: sql/mysql/backups/play4trophies/play4trophies-initial.sql.gz
 
 outputs:
   - name: connectionName
