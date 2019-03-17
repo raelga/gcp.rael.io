@@ -28,6 +28,11 @@ resources:
           requiresACL: true
           bucket: rshared-secrets
           file: sql/mysql/backups/play4trophies/play4trophies-initial.sql.gz
+        - name: wp_bigotes
+          database: wp_bigotes
+          requiresACL: true
+          bucket: rshared-secrets
+          file: sql/mysql/backups/bigotes/wp_bigotes-initial.sql.gz
 
 outputs:
   - name: connectionName
