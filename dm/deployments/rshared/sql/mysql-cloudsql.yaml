@@ -8,6 +8,7 @@ resources:
     type: ../../../templates/sql/master-instance.jinja
     properties:
       tier: db-f1-micro
+      dataDiskSizeGb: 15
       binaryLogEnabled: false
       publicIp: false
       privateIp: true
