@@ -28,3 +28,5 @@ outputs:
     value: $(ref.mysql-master.connectionName)
   - name: ipAddress
     value: $(ref.mysql-master.ipAddresses[0].ipAddress)
+  - name: serviceAccountEmailAddress
+    value: $(ref.mysql-master.serviceAccountEmailAddress)
