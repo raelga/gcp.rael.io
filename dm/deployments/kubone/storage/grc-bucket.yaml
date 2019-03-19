@@ -17,6 +17,7 @@ resources:
       description: Service account for the gcr.io/kubone container regisrty
       keys:
         - travis
+        - circle-ci
 
   - name: bucket
     type: ../../../templates/storage/bucket.jinja
@@ -45,3 +46,9 @@ outputs:
 
   - name: bucket-sa-travis-base64-key
     value: $(ref.bucket-sa.travis-base64-key)
+
+  - name: bucket-sa-circle-ci-rest-key
+    value: $(ref.bucket-sa.circle-ci-rest-key)
+
+  - name: bucket-sa-circle-ci-base64-key
+    value: $(ref.bucket-sa.circle-ci-base64-key)
