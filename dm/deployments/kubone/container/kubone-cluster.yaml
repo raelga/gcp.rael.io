@@ -1,5 +1,6 @@
 imports:
   - path: ../../../templates/container/kubernetes-cluster.jinja
+  - path: ../../../templates/iam/service-account.jinja
 #  - path: ../../templates/storage/gcr-bucket-iam-policy.jinja
 
 resources:
@@ -35,6 +36,16 @@ resources:
   #     region: eu
   #     serviceAccount: $(ref.kubernetes-cluster.nodes-sa)
 
+  - name:  circle-ci-sa
+    type: ../../../templates/iam/service-account.jinja
+    properties:
+      name: circle-ci
+      description: Service account for the gcr.io/kubone container regisrty
+      roles:
+        - roles/container.developer
+      keys:
+        - pybot
+
 outputs:
   - name: cluster-name
     value: $(ref.kubernetes-cluster.name)
@@ -42,3 +53,5 @@ outputs:
     value: $(ref.kubernetes-cluster.endpoint)
   - name: cluster-nodes-sa
     value: $(ref.kubernetes-cluster.nodes-sa)
+  - name: circle-ci-sa
+    value: $(ref.circle-ci-sa-pybot-key.privateKeyData)
