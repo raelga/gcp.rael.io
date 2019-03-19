@@ -22,12 +22,9 @@ resources:
           taints:
             - key: CriticalAddonsOnly
               effect: PREFER_NO_SCHEDULE
-        # - name: compute-pf-f1m
-        #   preemptible: true
-        #   autoscaling: false
-        #   taints:
-        #     - key: Preemtible
-        #       effect: NO_EXECUTE
+        - name: compute-pf-f1m
+          preemptible: true
+          autoscaling: false
 
   # Pending DM issue
   # https://github.com/GoogleCloudPlatform/deploymentmanager-samples/issues/283
