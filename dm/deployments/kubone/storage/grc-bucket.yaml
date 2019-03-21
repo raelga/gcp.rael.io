@@ -33,6 +33,9 @@ resources:
         - role: roles/storage.objectViewer
           members:
             - serviceAccount:kubone-gke-nodes@kubone.iam.gserviceaccount.com
+        - role: roles/storage.admin
+          members:
+            - serviceAccount:circle-ci@kubone.iam.gserviceaccount.com
 
 outputs:
   - name: bucket
