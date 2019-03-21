@@ -10,6 +10,7 @@ resources:
       name: kubone
       description: kubone Kubernetes Engine cluster.
       type: LOCAL
+      monitoringService: monitoring.googleapis.com
       network:
         name: kubone-net
         subnet: kubernetes-sn
