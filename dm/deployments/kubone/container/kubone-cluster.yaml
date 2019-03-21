@@ -54,5 +54,5 @@ outputs:
     value: $(ref.kubernetes-cluster.endpoint)
   - name: cluster-nodes-sa
     value: $(ref.kubernetes-cluster.nodes-sa)
-  - name: circle-ci-sa
-    value: $(ref.circle-ci-sa-pybot-key.privateKeyData)
+  - name: circle-ci-sa-mail
+    value: $(ref.circle-ci-sa.email)
