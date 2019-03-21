@@ -24,7 +24,8 @@ resources:
           taints:
             - key: CriticalAddonsOnly
               effect: PREFER_NO_SCHEDULE
-        - name: compute-pf-f1md
+        - name: compute-pf-g1md
+          machineType: g1-micro
           imageType: cos_containerd
           preemptible: true
           autoscaling: false
