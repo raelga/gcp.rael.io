@@ -24,7 +24,8 @@ resources:
           taints:
             - key: CriticalAddonsOnly
               effect: PREFER_NO_SCHEDULE
-        - name: compute-pf-f1m
+        - name: compute-pf-f1md
+          imageType: cos_containerd
           preemptible: true
           autoscaling: false
 
