@@ -18,14 +18,14 @@ resources:
         nonMasqueradeCIDRs: 10.60.0.0/16
         dns: coreDNS
       nodePools:
-        - name: addons-pf-f1m
-          preemptible: true
-          autoscaling: false
-          taints:
-            - key: CriticalAddonsOnly
-              effect: PREFER_NO_SCHEDULE
-        - name: compute-pf-g1md
-          machineType: g1-micro
+        # - name: addons-pf-f1m
+        #   preemptible: true
+        #   autoscaling: false
+        #   taints:
+        #     - key: CriticalAddonsOnly
+        #       effect: PREFER_NO_SCHEDULE
+        - name: compute-pfd-g1s
+          machineType: g1-small
           imageType: cos_containerd
           preemptible: true
           autoscaling: false
