@@ -1,0 +1,30 @@
+imports:
+  - path: ../../../templates/compute/instance.jinja
+
+resources:
+
+- name: companion
+  type: ../../../templates/compute/instance.jinja
+  properties:
+    description: "Companion Kube instance"
+    machineType: n1-standard-2
+    bootDiskImage: projects/debian-cloud/global/images/family/debian-9
+    network: kubone-net
+    subnetwork: kompute-sn
+    reservedPublicAddress: true
+    allowSSH: true
+    disks:
+      - name: data
+        size: 20
+    # firewall:
+    #   - name: ssh
+    #     ports:
+    #       - 22
+
+outputs:
+  - name: external-address
+    value: $(ref.companion.externalAddress)
+  - name: internal-address
+    value: $(ref.companion.internalAddress)
+  - name: service-account
+    value: $(ref.companion.serviceAccount)
