@@ -14,4 +14,6 @@ resources:
             range: 10.60.17.0/24
           - name: pods
             range: 10.60.18.0/23
-    google-managed-services-range: 10.60.16.128/25
+      - name: kompute
+        range: 10.70.1.0/24
+    google-managed-services-range: 10.70.240.0/20
