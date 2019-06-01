@@ -1,0 +1,29 @@
+imports:
+  - path: ../../../templates/compute/instance.jinja
+
+resources:
+
+- name: old-school
+  type: ../../../templates/compute/instance.jinja
+  properties:
+    description: "Old School instance"
+    machineType: g1-small
+    bootDiskImage: projects/debian-cloud/global/images/family/debian-9
+    network: play4trophies-net
+    reservedPublicAddress: true
+    allowSSH: true
+    disks:
+      - name: data
+        size: 40
+    firewall:
+      - name: http
+        ports:
+          - 80
+
+outputs:
+  - name: external-address
+    value: $(ref.old-school.externalAddress)
+  - name: internal-address
+    value: $(ref.old-school.internalAddress)
+  - name: service-account
+    value: $(ref.old-school.serviceAccount)

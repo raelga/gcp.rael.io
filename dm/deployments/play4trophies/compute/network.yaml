@@ -1,0 +1,19 @@
+imports:
+  - path: ../../../templates/compute/vpc-network.jinja
+
+resources:
+
+- name: vpc-network
+  type: ../../../templates/compute/vpc-network.jinja
+  properties:
+    subnets:
+      - name: kubernetes
+        range: 10.90.16.0/25
+        secondaryIpRanges:
+          - name: services
+            range: 10.90.17.0/24
+          - name: pods
+            range: 10.90.18.0/23
+      - name: compute
+        range: 10.90.1.0/24
+    google-managed-services-range: 10.90.240.0/20

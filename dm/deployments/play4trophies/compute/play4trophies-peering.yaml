@@ -1,0 +1,10 @@
+imports:
+  - path: ../../../templates/compute/vpc-network-peering.jinja
+
+resources:
+  - name: rshared-play4trophies-peering
+    type: ../../../templates/compute/vpc-network-peering.jinja
+    properties:
+      name: rshared-play4trophies-peering
+      network: play4trophies-net
+      peerNetwork: projects/rshared/global/networks/rshared-net
