@@ -1,0 +1,25 @@
+imports:
+  - path: ../../templates/iam/service-account.jinja
+
+resources:
+
+  - name: gitops-sa
+    type: ../../templates/iam/service-account.jinja
+    properties:
+      name: gitops
+      description: Service account for the gcr.io/kubone container regisrty
+      roles:
+        - roles/storage.admin
+        - roles/container.developer
+        - roles/deploymentmanager.editor
+      keys:
+        - azure-devops
+        - circleci
+
+outputs:
+  - name: gitops-sa-mail
+    value: $(ref.gitops-sa.email)
+  - name: gitops-azure-devops-key
+    value: $(ref.gitops-sa-azure-devops-key.privateKeyData)
+  - name: gitops-circleci-key
+    value: $(ref.gitops-sa-circleci-key.privateKeyData)
