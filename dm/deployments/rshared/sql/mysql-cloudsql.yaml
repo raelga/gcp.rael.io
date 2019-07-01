@@ -23,6 +23,7 @@ resources:
         - name: p4t_psn_dev
         - name: wp_bigotes
         - name: wp_sonidosysonados
+        - name: wp_p4t_sandbox
       imports:
         - name: play4trophies
           requiresACL: true
