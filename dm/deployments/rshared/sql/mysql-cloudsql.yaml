@@ -24,6 +24,7 @@ resources:
         - name: wp_bigotes
         - name: wp_sonidosysonados
         - name: wp_p4t_sandbox
+        - name: wp_p4t
       imports:
         - name: play4trophies
           requiresACL: true
