@@ -9,4 +9,25 @@ resources:
     subnets:
       - name: compute
         range: 10.60.0.0/23
+      - name: rshared
+        range: 10.50.0.0/24
+        secondaryIpRanges:
+          - name: services
+            range: 10.50.1.0/24
+          - name: pods
+            range: 10.50.2.0/23
+      - name: bigotes-pro
+        range: 10.50.20.0/24
+        secondaryIpRanges:
+          - name: services
+            range: 10.50.21.0/24
+          - name: pods
+            range: 10.50.22.0/23
+      - name: kubone
+        range: 10.70.20.0/24
+        secondaryIpRanges:
+          - name: services
+            range: 10.70.21.0/24
+          - name: pods
+            range: 10.70.22.0/23
     google-managed-services-range: 10.60.240.0/20
