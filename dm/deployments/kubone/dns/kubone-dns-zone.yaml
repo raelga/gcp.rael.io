@@ -1,0 +1,11 @@
+resources:
+
+- name: dns-zone
+  type: gcp-types/dns-v1:managedZones
+  properties:
+    description: Managed zone for kubone.gcp.rael.io.
+    dnsName: kubone.gcp.rael.io.
+
+outputs:
+- name: kubone.gcp.rael.io. name servers
+  value: $(ref.dns-zone.nameServers)
