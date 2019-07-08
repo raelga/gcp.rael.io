@@ -15,21 +15,22 @@ resources:
       network:
         name: rshared-net
         subnet: glados-sn
-        # nonMasqueradeCIDRs: 10.50.0.0/16
+        nonMasqueradeCIDRs: 10.50.0.0/22
         dns: coreDNS
-        # ingress: traefik
+        ingress: traefik
+        kubeip: 1
       nodePools:
+        - name: compute-pat-g1s
+          machineType: g1-small
+          imageType: cos_containerd
+          preemptible: true
+          autoscaling: true
         # - name: addons-pf-f1m
         #   preemptible: true
         #   autoscaling: false
         #   taints:
         #     - key: CriticalAddonsOnly
         #       effect: PREFER_NO_SCHEDULE
-        - name: compute-pad-g1s
-          machineType: g1-small
-          imageType: cos_containerd
-          preemptible: true
-          autoscaling: true
 
   # Pending DM issue
   # https://github.com/GoogleCloudPlatform/deploymentmanager-samples/issues/283
