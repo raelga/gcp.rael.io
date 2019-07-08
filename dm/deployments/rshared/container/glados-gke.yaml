@@ -20,7 +20,7 @@ resources:
         ingress: traefik
         kubeip: 1
       nodePools:
-        - name: compute-pat-g1s
+        - name: compute-pad-g1s
           machineType: g1-small
           imageType: cos_containerd
           preemptible: true
