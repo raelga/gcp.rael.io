@@ -31,6 +31,12 @@ resources:
         #   taints:
         #     - key: CriticalAddonsOnly
         #       effect: PREFER_NO_SCHEDULE
+      k8s:
+        namespaces:
+          - telegram
+          - sonidosysonados
+          - bigotes
+          - play4trophies
 
   # Pending DM issue
   # https://github.com/GoogleCloudPlatform/deploymentmanager-samples/issues/283
