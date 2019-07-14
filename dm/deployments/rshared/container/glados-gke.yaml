@@ -19,6 +19,7 @@ resources:
         dns: coreDNS
         ingress: traefik
         kubeip: 1
+        networkPolicy: true
       nodePools:
         - name: compute-pad-g1s
           machineType: g1-small
@@ -57,15 +58,15 @@ resources:
       keys:
         - pybot
 
-outputs:
-  - name: cluster-name
-    value: $(ref.kubernetes-cluster.name)
-  - name: cluster-endpoint
-    value: $(ref.kubernetes-cluster.endpoint)
-  - name: cluster-nodes-sa
-    value: $(ref.kubernetes-cluster.nodes-sa)
-  - name: cluster-kubeip-address
-    value: $(ref.kubernetes-cluster.kubeip-address)
+# outputs:
+#   - name: cluster-name
+#     value: $(ref.kubernetes-cluster.name)
+#   - name: cluster-endpoint
+#     value: $(ref.kubernetes-cluster.endpoint)
+#   - name: cluster-nodes-sa
+#     value: $(ref.kubernetes-cluster.nodes-sa)
+#   - name: cluster-kubeip-address
+#     value: $(ref.kubernetes-cluster.kubeip-address)
 #  - name: circle-ci-sa
 #    value: $(ref.circle-ci-sa-pybot-key.privateKeyData)
 #  - name: circle-ci-sa-mail
