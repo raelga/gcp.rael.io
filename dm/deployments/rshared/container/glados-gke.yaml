@@ -47,15 +47,15 @@ resources:
   #     region: eu
   #     serviceAccount: $(ref.kubernetes-cluster.nodes-sa)
 
-  # - name:  circle-ci-sa
-  #   type: ../../../templates/iam/service-account.jinja
-  #   properties:
-  #     name: circle-ci
-  #     description: Service account for the gcr.io/kubone container regisrty
-  #     roles:
-  #       - roles/container.developer
-  #     keys:
-  #       - pybot
+  - name:  circle-ci-sa
+    type: ../../../templates/iam/service-account.jinja
+    properties:
+      name: circle-ci
+      description: Service account for the gcr.io/kubone container regisrty
+      roles:
+        - roles/container.developer
+      keys:
+        - pybot
 
 outputs:
   - name: cluster-name
