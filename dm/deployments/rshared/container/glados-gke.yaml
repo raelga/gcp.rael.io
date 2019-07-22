@@ -38,6 +38,7 @@ resources:
           - sonidosysonados
           - bigotes
           - play4trophies
+          - cloudnative
 
   # Pending DM issue
   # https://github.com/GoogleCloudPlatform/deploymentmanager-samples/issues/283
