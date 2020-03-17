@@ -32,11 +32,10 @@ resources:
       bindings:
         - role: roles/storage.objectViewer
           members:
-            - serviceAccount:kubone-gke-nodes@kubone.iam.gserviceaccount.com
             - serviceAccount:glados-gke-node@rshared.iam.gserviceaccount.com
+            - serviceAccount:kubone-gke-node@rshared.iam.gserviceaccount.com
         - role: roles/storage.admin
           members:
-            - serviceAccount:circle-ci@kubone.iam.gserviceaccount.com
             - serviceAccount:circle-ci@rshared.iam.gserviceaccount.com
 
 outputs:
