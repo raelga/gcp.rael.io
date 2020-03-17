@@ -1,0 +1,74 @@
+imports:
+  - path: ../../../templates/container/kubernetes-cluster.jinja
+  - path: ../../../templates/iam/service-account.jinja
+#  - path: ../../templates/storage/gcr-bucket-iam-policy.jinja
+
+resources:
+  - name: kubernetes-cluster
+    type: ../../../templates/container/kubernetes-cluster.jinja
+    properties:
+      name: kubone
+      description: Kubone Kubernetes Engine cluster.
+      type: LOCAL
+      initialVersion: 1.15.9-gke.8
+      network:
+        name: rshared-net
+        subnet: kubone-sn
+        nonMasqueradeCIDRs: 10.50.0.0/22
+        dns: coreDNS
+        ingress: traefik
+        traefikDashboard: true
+        kubeip: 1
+        networkPolicy: true
+      nodePools:
+        - name: compute-pac-g1s
+          machineType: g1-small
+          imageType: cos
+          preemptible: true
+          autoscaling: true
+        # - name: addons-pf-f1m
+        #   preemptible: true
+        #   autoscaling: false
+        #   taints:
+        #     - key: CriticalAddonsOnly
+        #       effect: PREFER_NO_SCHEDULE
+      k8s:
+        namespaces:
+          - telegram
+          - sonidosysonados
+          - bigotes
+          - play4trophies
+          - cloudnative
+
+  # Pending DM issue
+  # https://github.com/GoogleCloudPlatform/deploymentmanager-samples/issues/283
+  # - name: gke-gcr-bucket-iam-policy
+  #   type: ../../templates/storage/gcr-bucket-iam-policy.jinja
+  #   properties:
+  #     name: gke-kubone-gcr-pull-iam-policy
+  #     region: eu
+  #     serviceAccount: $(ref.kubernetes-cluster.nodes-sa)
+
+  - name:  circle-ci-sa
+    type: ../../../templates/iam/service-account.jinja
+    properties:
+      name: circle-ci
+      description: Service account for the gcr.io/kubone container regisrty
+      roles:
+        - roles/container.developer
+      keys:
+        - pybot
+
+outputs:
+  - name: cluster-name
+    value: $(ref.kubernetes-cluster.name)
+  - name: cluster-endpoint
+    value: $(ref.kubernetes-cluster.endpoint)
+  - name: cluster-nodes-sa
+    value: $(ref.kubernetes-cluster.nodes-sa)
+  - name: cluster-kubeip-address
+    value: $(ref.kubernetes-cluster.kubeip-address)
+  - name: circle-ci-sa
+    value: $(ref.circle-ci-sa-pybot-key.privateKeyData)
+  - name: circle-ci-sa-mail
+    value: $(ref.circle-ci-sa.email)
