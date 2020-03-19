@@ -22,9 +22,9 @@ resources:
   - name: bucket
     type: ../../../templates/storage/bucket.jinja
     properties:
-      name: artifacts.kubone.appspot.com
+      name: eu.artifacts.kubone.appspot.com
       storageClass: multi_regional
-      location: us
+      location: eu
       acl:
         - name: bucket-sa
           entity: user-$(ref.bucket-sa.email)
@@ -32,8 +32,7 @@ resources:
       bindings:
         - role: roles/storage.objectViewer
           members:
-            - serviceAccount:glados-gke-node@rshared.iam.gserviceaccount.com
-            - serviceAccount:kubone-gke-node@rshared.iam.gserviceaccount.com
+              - serviceAccount:kubone-gke-node@rshared.iam.gserviceaccount.com
         - role: roles/storage.admin
           members:
             - serviceAccount:circle-ci@rshared.iam.gserviceaccount.com
