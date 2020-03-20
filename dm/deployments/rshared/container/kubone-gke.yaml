@@ -18,6 +18,7 @@ resources:
         dns: coreDNS
         ingress: traefik
         traefikDashboard: true
+        traefikHTTPS: true
         kubeip: 1
         networkPolicy: true
       nodePools:
