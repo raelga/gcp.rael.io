@@ -22,6 +22,7 @@ resources:
         - name: p4t_psn
         - name: p4t_psn_dev
         - name: wp_bigotes
+        - name: flarum_bigotes
         - name: wp_sonidosysonados
         - name: wp_p4t_sandbox
         - name: wp_p4t
