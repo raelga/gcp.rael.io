@@ -22,17 +22,13 @@ resources:
         kubeip: 1
         networkPolicy: true
       nodePools:
-        - name: compute-pac-g1s
-          machineType: g1-small
-          imageType: cos
+        - name: compute-pad-e2s
+          machineType: e2-small
+          minNodeCount: 2
+          maxNodeCount: 3
           preemptible: true
           autoscaling: true
-        # - name: addons-pf-f1m
-        #   preemptible: true
-        #   autoscaling: false
-        #   taints:
-        #     - key: CriticalAddonsOnly
-        #       effect: PREFER_NO_SCHEDULE
+          version: 1.18.20-gke.901
       k8s:
         namespaces:
           - telegram
